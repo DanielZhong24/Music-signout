@@ -4,7 +4,7 @@ app = Flask(__name__, template_folder='view')
 
 @app.route('/')
 def home():
-    return render_template('view/index.html')
+    return render_template('index.html')
 
 @app.route('/music')
 def music():

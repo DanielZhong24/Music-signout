@@ -1,0 +1,4 @@
+# requirements.txt
+Flask==3.0.3
+Flask-SQLAlchemy==3.0.3
+mysqlclient==2.1.0
