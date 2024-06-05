@@ -11,7 +11,6 @@ def create_app():
 
     #db is the database
     db.init_app(app)
-
     with app.app_context():
         '''
         from app.view.newfolder.viewNew import new_bp
