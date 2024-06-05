@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Music Students{% endblock %}
+
+{% block content %}
+<h2> Instruments </h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Instrument Type</th>
+            <th>Instrument</th>
+            <th>Case Number</th>
+            <th>Condition</th>
+            <th>Bar Code Number</th>
+            <th>Current Borrower</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for instrument in instruments %}
+        <tr>
+            <td>{{ instrument.id }}</td>
+            <td>{{ instrument.instrument_type }}</td>
+            <td>{{ instrument.instrument }}</td>
+            <td>{{ instrument.case_number }}</td>
+            <td>{{ instrument.condition }}</td>
+            <td>{{ instrument.bar_code }}</td>
+            <td>{{ instrument.current_borrower }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
