@@ -20,6 +20,8 @@ def create_app():
         from app.controller.StudentController import student_bp
         app.register_blueprint(student_bp)
 
+        from app.controller.InstrumentController import instrument_bp
+        app.register_blueprint(instrument_bp)
 
         # Print all registered routes for debugging
         print(app.url_map)
