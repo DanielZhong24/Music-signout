@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask , request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 
@@ -11,6 +11,12 @@ def create_app():
 
     #db is the database
     db.init_app(app)
+
+    #check active page
+    def is_active_page(page):
+        return 'active' if request.path == page else ''
+    
+    app.jinja_env.globals.update(is_active_page=is_active_page)
     with app.app_context():
         '''
         from app.view.newfolder.viewNew import new_bp

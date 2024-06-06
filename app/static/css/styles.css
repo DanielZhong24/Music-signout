@@ -14,16 +14,21 @@ main {
     padding: 1em;
 }
 
-.table{
-    border: 1px solid black;
+
+.nav-link.active{
+    background-color: grey !important;
+}
+.table-bordered {
+    border: 1px solid #dee2e6;
 }
 
-.table th{
-    background-color: aquamarine;
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
 }
 
-.table th, td{
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
+.section-title{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size:50px;
 }

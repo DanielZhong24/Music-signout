@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Add Instrument{% endblock %}
+
+{% block content %}
+<h2>Add New Instrument</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert alert-dismissible fade show" role="alert">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% if messages[0][0] == 'success'%}
+        <script>
+            setTimeout(function() {
+                window.location.href = "{{ url_for('instrument_bp.instrument') }}";
+            }, 3000);
+        </script>
+        {% endif %}
+
+    {% endif %}
+{% endwith %}
+<form method="POST" action="{{ url_for('instrument_bp.add_instrument') }}">
+    <div class="mb-3">
+        <label for="instrument_type" class="form-label">Instrument Type</label>
+        <select class="form-control" id="instrument_type" name="instrument_type" required>
+            <option value="" disabled selected>Select an Instrument Type</option>
+            <option value="String">String</option>
+            <option value="Woodwind">Woodwind</option>
+            <option value="Brass">Brass</option>
+            <option value="Percussion">Percussion</option>
+            <option value="Keyboard">Keyboard</option>
+            <option value="Electronic">Electronic</option>
+        </select>    
+    </div>
+    <div class="mb-3">
+        <label for="instrument" class="form-label">Instrument</label>
+        <input type="text" class="form-control" id="instrument" name="instrument" required>
+    </div>
+    <div class="mb-3">
+        <label for="case_number" class="form-label">Case Number</label>
+        <input type="text" class="form-control" id="case_number" name="case_number" required>
+    </div>
+    <div class="mb-3">
+        <label for="condition" class="form-label">Condition</label>
+        <select class="form-control" id="condition" name="condition" required>
+            <option value="In use">In use</option>
+            <option value="Not in use">Not in use</option>
+        </select>        
+    </div>
+    <div class="mb-3">
+        <label for="bar_code" class="form-label">Bar Code Number</label>
+        <input type="text" class="form-control" id="bar_code" name="bar_code" required>
+    </div>
+    <div class="mb-3">
+        <label for="current_borrower" class="form-label">Current Borrower</label>
+        <input type="text" class="form-control" id="current_borrower" name="current_borrower">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Instrument</button>
+</form>
+<script>
+    function toggleCurrentBorrower() {
+        var condition = document.getElementById("condition").value;
+        var currentBorrower = document.getElementById("current_borrower");
+        
+        if (condition === "In use") {
+            currentBorrower.disabled = false;
+            currentBorrower.required = true;
+        } else {
+            currentBorrower.disabled = true;
+            currentBorrower.required = false;
+            currentBorrower.value = "";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('condition').addEventListener("change",toggleCurrentBorrower);
+        toggleCurrentBorrower();
+
+    });
+</script>
+{% endblock %}
