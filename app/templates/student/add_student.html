@@ -12,24 +12,19 @@
             {% endfor %}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        {% if messages[0][0] == 'success'%}
+        {% if messages[0][0] == 'success' %}
         <script>
             setTimeout(function() {
-                window.location.href = "{{ url_for('student_bp.student') }}";
+                window.location.href = "{{ url_for('student_bp.students') }}";
             }, 3000);
         </script>
         {% endif %}
-
     {% endif %}
 {% endwith %}
 <form method="POST" action="{{ url_for('student_bp.add_student') }}">
     <div class="mb-3">
-        <label for="student" class="form-label"></label>
-        <input type="text" class="form-control" id="student" name="student" required>
-    </div>
-    <div class="mb-3">
         <label for="student_firstName" class="form-label">Student First Name</label>
-        <input type="text" class="form-control" id="case_number" name="case_number" required>
+        <input type="text" class="form-control" id="student_firstName" name="student_firstName" required>
     </div>
     <div class="mb-3">
         <label for="student_lastName" class="form-label">Student Last Name</label>
@@ -37,12 +32,12 @@
     </div>
     <div class="mb-3">
         <label for="student_id" class="form-label">Student ID</label>
-        <input type="text" class="form-control" id="student_id" name="student_id">
+        <input type="text" class="form-control" id="student_id" name="student_id" required>
     </div>
     <div class="mb-3">
         <label for="grade" class="form-label">Grade</label>
         <input type="text" class="form-control" id="grade" name="grade" required>
     </div>
-    <button type="submit" class="btn btn-primary">Add Studentbutton>
+    <button type="submit" class="btn btn-primary">Add Student</button>
 </form>
 {% endblock %}
