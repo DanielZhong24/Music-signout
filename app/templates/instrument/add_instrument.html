@@ -37,7 +37,8 @@
     </div>
     <div class="mb-3">
         <label for="instrument" class="form-label">Instrument</label>
-        <input type="text" class="form-control" id="instrument" name="instrument" required>
+        <select class="form-control" id="instrument" name="instrument" required>
+        </select>
     </div>
     <div class="mb-3">
         <label for="case_number" class="form-label">Case Number</label>
@@ -75,10 +76,32 @@
         }
     }
 
+
+    function toggleInstrument(){
+        var type = $("#instrument_type");
+        if(type.val() === "Woodwind"){
+            $("#instrument").empty();
+            var flute = document.createElement("option");
+            flute.value = "Flute"
+            flute.innerText = "Flute";
+            document.getElementById("instrument").appendChild(flute);
+        }
+        else if(type.val() === "Brass"){
+            $("#instrument").empty();
+            var trumpet = document.createElement("option");
+            trumpet.innerText = "Trumpet";
+            document.getElementById("instrument").appendChild(trumpet);
+        }
+
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('condition').addEventListener("change",toggleCurrentBorrower);
+        document.getElementById('instrument_type').addEventListener("change",toggleInstrument);
         toggleCurrentBorrower();
 
     });
+
+
 </script>
 {% endblock %}
