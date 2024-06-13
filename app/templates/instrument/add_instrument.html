@@ -28,7 +28,7 @@
         <select class="form-control" id="instrument_type" name="instrument_type" required>
             <option value="" disabled selected>Select an Instrument Type</option>
             <option value="Woodwind">Woodwind</option>
-            <option value="Bass">Bass</option>
+            <option value="Brass">Brass</option>
             <option value="String">String</option>
             <option value="Percussion">Percussion</option>
             <option value="Equipment">Equipment</option>
@@ -37,7 +37,8 @@
     </div>
     <div class="mb-3">
         <label for="instrument" class="form-label">Instrument</label>
-        <input type="text" class="form-control" id="instrument" name="instrument" required>
+        <select class="form-control" id="instrument" name="instrument" required>
+        </select>
     </div>
     <div class="mb-3">
         <label for="case_number" class="form-label">Case Number</label>
@@ -93,17 +94,17 @@
             var oboe = document.createElement("option");
             oboe.value = "Oboe";
             oboe.innerText = "Oboe";
-            document.getElementById("instrument").appendChild(oboes);
+            document.getElementById("instrument").appendChild(oboe);
 
             var bassoon = document.createElement("option");
             bassoon.value = "Bassoon";
             bassoon.innerText = "Bassoon";
-            document.getElementById("insturment").appendChild(bassoon);
+            document.getElementById("instrument").appendChild(bassoon);
 
             var alto = document.createElement("option");
             alto.value = "Alto Saxophone";
             alto.innerText = "Alto Saxophone";
-            document.getElementById("insturment").appendChild(alto);
+            document.getElementById("instrument").appendChild(alto);
 
             var tenor = document.createElement("option");
             tenor.value = "Tenor Saxophone";
@@ -126,12 +127,12 @@
             var trombone = document.createElement("option");
             trombone.value = "Trombone";
             trombone.innerText = "Trombone";;
-            document.getElemenntById("instrment").appendChild(trombone);
+            document.getElementById("instrument").appendChild(trombone);
 
             var frenchHorn = document.createElement("option");
             frenchHorn.value = "French Horn";
             frenchHorn.innerText = "French Horn";
-            document.getElemenntById("instruemnt").appendChild(frenchHorn);
+            document.getElementById("instrument").appendChild(frenchHorn);
 
             var tuba = document.createElement("option");
             tuba.value = "Tuba";
@@ -155,17 +156,17 @@
             var viola = document.createElement("option");
             viola.value = "Viola";
             viola.innerText = "Viola";
-            document.getElemenntById("instrument").appendChild(viola);
+            document.getElementById("instrument").appendChild(viola);
 
             var cello = document.createElement("option");
             cello.value = "Cello";
-            cello.innerTexte = "Cello";
-            document.getElementById("instrment").appendChild(Cello);
+            cello.innerText = "Cello";
+            document.getElementById("instrument").appendChild(cello);
 
             var dblBasses = document.createElement("option");
             dblBasses.value = "Double Basses";
             dblBasses.innerText = "Double Basses";
-            document.getElementbyId("instrument").appendChild(dblBasses);
+            document.getElementById("instrument").appendChild(dblBasses);
 
             var harp = document.createElement("option");
             harp.value = "Harp";
@@ -198,7 +199,7 @@
 
             var marimbas = document.createElement("option");
             marimbas.value = "Marimbas";
-            mmarimbas.innerText = "Marimbas";
+            marimbas.innerText = "Marimbas";
             document.getElementById("instrument").appendChild(marimbas);
 
             var xylo = document.createElement("option");
@@ -248,13 +249,23 @@
             var soundSys = document.createElement("option");
             soundSys.value = "Sound System";
             soundSys.innerText = "Sound System";
-            document.getElementById("instrument").appendChild(soundsys);
+            document.getElementById("instrument").appendChild(soundSys);
             
-            
-            
+        }
+        else if (type.val() === "Sheet Music and Books"){
+            $("#instrument").empty();
 
+            var sheet= document.createElement("option");
+            sheet.value = "Sheet Music";
+            sheet.innerText = "Sheet Music";
+            document.getElementById("instrument").appendChild(sheet);
 
+            var books = document.createElement("option");
+            books.value = "Book";
+            books.innerText = "Book";
+            document.getElementById("instrument").appendChild(books);
     }
+}
 
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('condition').addEventListener("change",toggleCurrentBorrower);
