@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Edit Student
+{% endblock %}
+
+{% block content %}
+    <h2>Edit Student</h2>
+    
+    <form method="POST" action="{{ url_for('student_bp.edit_student', student_id=student.id) }}">
+        <input type="hidden" name="student_id" value="{{ student.id }}">
+        
+        <div class="mb-3">
+            <label for="student_firstName" class="form-label">Student First Name</label>
+            <input type="text" class="form-control" id="student_firstName" name="student_firstName" value="{{ student.student_firstName }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="student_lastName" class="form-label">Student Last Name</label>
+            <input type="text" class="form-control" id="student_lastName" name="student_lastName" value="{{ student.student_lastName}}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="student_id" class="form-label">Student Id</label>
+            <input type="text" class="form-control" id="student_id" name="student_id" value="{{ student.student_id }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="grade" class="form-label">Grade </label>
+            <input type="text" class="form-control" id="grade" name="grade" value="{{ student.grade }}" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Student</button>
+    </form>
+{% endblock %}

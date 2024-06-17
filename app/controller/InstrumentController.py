@@ -10,16 +10,19 @@ from app import db
 
 instrument_bp = Blueprint('instrument_bp', __name__)
 
+# Route to display all instruments
 @instrument_bp.route('/instrument',methods=['GET'])
-@login_required
 def instrument():
+    # Query all instruments from the database (The query all method retrieves all records from the Instrument table in our database)
     instruments = Instrument.query.all()
+    # Render the template to display all the instruments, passing the instruments data
     return render_template('instrument/instrument.html', instruments=instruments)
 
+# Route to add a new instrument
 @instrument_bp.route('/addInstrument', methods=['GET', 'POST'])
-@login_required
 def add_instrument():
     if request.method == 'POST':
+        # Get the data from the user
         instrument_type = request.form['instrument_type']
         instrument = request.form['instrument']
         case_number = request.form['case_number']
@@ -27,17 +30,25 @@ def add_instrument():
         bar_code = request.form['bar_code']
         current_borrower = request.form.get('current_borrower', None)
 
+        # Check if an instrument with the same name and case number already exists
         existing_intrument = Instrument.query.filter_by(instrument=instrument,case_number=case_number).first()
         if existing_intrument:
+            # If it already exists flash a message on the screen and redirect back to the add instrument page
             flash('Instrument with the same case number already exists!', 'danger')
             return redirect(url_for('instrument_bp.add_instrument'))
+        
+        # Create a new instrument object with the data
         new_instrument = Instrument(instrument_type, instrument, case_number, condition, bar_code, current_borrower)
+        # Add the instrument to the data base
         db.session.add(new_instrument)
+        # Save the instrument in the database
         db.session.commit()
 
+        # Flash a message on the screen that the instrument was added succesfully and redirect back ot the add instrument page
         flash('Instrument added successfully!', 'success')
         return redirect(url_for('instrument_bp.instrument'))
 
+    # If the method of the request is GET render the form to add a new instrument 
     return render_template('instrument/add_instrument.html')
 
 @instrument_bp.route('/delete_instrument/<int:instrument_id>', methods=['POST'])

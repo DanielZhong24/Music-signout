@@ -19,6 +19,7 @@
             }, 3000);
         </script>
         {% endif %}
+
     {% endif %}
 {% endwith %}
 <form method="POST" action="{{ url_for('student_bp.add_student') }}">
@@ -40,4 +41,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Add Student</button>
 </form>
+</script>
 {% endblock %}
