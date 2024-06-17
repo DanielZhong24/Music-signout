@@ -1,0 +1,16 @@
+Tested all tables add, edit and delete
+Tested teacher login
+Found bugs in how to edit and delete student 
+Found bugs in after adding something to the database the drop down would reload the page
+Found bugs in after logging out and going back still being able to see the tables
+
+
+--Conclusion--
+During testing, all database tables were successfully verified for add, edit, and delete operations. The teacher login functionality was tested and confirmed to be working correctly. 
+
+However, several bugs were identified: 
+- Editing and deleting student records showed issues.
+- Dropdown menus caused the page to reload after adding new entries to the database.
+- There were problems with session handling where logging out did not immediately restrict access, allowing visibility of tables even after logging out. 
+
+These issues require further debugging and resolution.
