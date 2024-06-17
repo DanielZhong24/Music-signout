@@ -12,6 +12,7 @@ instrument_bp = Blueprint('instrument_bp', __name__)
 
 # Route to display all instruments
 @instrument_bp.route('/instrument',methods=['GET'])
+@login_required
 def instrument():
     # Query all instruments from the database (The query all method retrieves all records from the Instrument table in our database)
     instruments = Instrument.query.all()

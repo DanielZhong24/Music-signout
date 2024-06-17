@@ -2,3 +2,14 @@ Tested all tables functionalities including edit, delete and add.
 Tested login system, and role selection.
 Tested Instrument, Student, History list view.
 Tested relationship(foreign keys) with all three tables to make sure everything is updated.
+Tested and fixed a bug where a teacher could logout but can use the arrow key to go back and still view the list without logging in.
+Tested and fixed a bug where create a new instrument/student after a creation of a first one will lead to reloading of the page unexpectedly.
+Tested and fixed a bug where the client couldn't recognized the delete function we were running.
+Tested and fixed a bug where the login password and couldn't be used from the database.
+
+--Conclusion--
+    Tested all table functionalities, including edit, delete, and add, and verified the login system and role selection.
+I checked the Instrument, Student, and History list views and ensured relationships with foreign keys are properly updated.
+I fixed a bug where a teacher could logout but still view the list using the back button, and another bug causing page reloads
+after creating a new instrument or student. Additionally, I resolved an issue where the client couldn't recognize the delete function,
+and a bug preventing the login password from being used from the database.
