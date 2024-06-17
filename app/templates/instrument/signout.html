@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Out Instrument{% endblock %}
+
+{% block content %}
+    <h1>Sign Out Instrument</h1>
+    <form action="{{ url_for('instrument_bp.signout_instrument') }}" method="post" style="max-width: 500px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <div class="form-group">
+            <label for="student_id">Student ID:</label>
+            <input type="text" class="form-control" id="student_id" name="student_id" required style="margin-bottom: 15px;">
+        </div>
+        <div class="form-group">
+            <label for="barcode">Instrument Barcode:</label>
+            <input type="text" class="form-control" id="barcode" name="barcode" required style="margin-bottom: 15px;">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Out</button>
+        {% if error %}
+        <div class="alert alert-danger mt-3">{{ error }}</div>
+        {% endif %}
+    </form>
+{% endblock %}
