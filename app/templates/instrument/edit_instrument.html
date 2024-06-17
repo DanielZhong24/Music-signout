@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Edit Instrument
+{% endblock %}
+
+{% block content %}
+    <h2>Edit Instrument</h2>
+    
+    <form method="POST" action="{{ url_for('instrument_bp.edit_instrument', instrument_id=instrument.id) }}">
+        <input type="hidden" name="instrument_id" value="{{ instrument.id }}">
+        
+        <div class="mb-3">
+            <label for="instrument_type" class="form-label">Instrument Type</label>
+            <input type="text" class="form-control" id="instrument_type" name="instrument_type" value="{{ instrument.instrument_type }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="instrument_name" class="form-label">Instrument Name</label>
+            <input type="text" class="form-control" id="instrument" name="instrument" value="{{ instrument.instrument}}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="case_number" class="form-label">Case Number</label>
+            <input type="text" class="form-control" id="case_number" name="case_number" value="{{ instrument.case_number }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="condition" class="form-label">Condition</label>
+            <input type="text" class="form-control" id="condition" name="condition" value="{{ instrument.condition }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="bar_code" class="form-label">Bar Code Number</label>
+            <input type="text" class="form-control" id="bar_code" name="bar_code" value="{{ instrument.bar_code }}" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="current_borrower" class="form-label">Current Borrower</label>
+            <input type="text" class="form-control" id="current_borrower" name="current_borrower" value="{{ instrument.current_borrower }}">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update Instrument</button>
+    </form>
+{% endblock %}

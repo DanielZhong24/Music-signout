@@ -3,14 +3,17 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from ..model.StudentModel import MusicStudent
 from app import db
+from flask_login import login_required, current_user
 student_bp = Blueprint('student_bp', __name__)
 
 @student_bp.route('/student', methods=['GET'])
+@login_required
 def students():
     students = MusicStudent.query.all()
     return render_template('student/student.html', students=students)
 
 @student_bp.route('/addStudent', methods=['GET', 'POST'])
+@login_required
 def add_student():
     if request.method == 'POST':
         student_firstName = request.form['student_firstName']
