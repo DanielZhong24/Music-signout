@@ -1,5 +1,6 @@
 from app import db
 
+#Defines the student model which represents the music students in the database
 class MusicStudent(db.Model):
     __tablename__ = 'music_students'
 
@@ -9,6 +10,7 @@ class MusicStudent(db.Model):
     student_id = db.Column(db.String(20), unique=True)
     grade = db.Column(db.String(10))
 
+    # Constructor for initializing students
     def __init__(self, student_firstName, student_lastName, student_id, grade):
         self.student_firstName = student_firstName
         self.student_lastName = student_lastName

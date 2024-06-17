@@ -71,7 +71,7 @@ def delete_student(student_id):
 def edit_student(student_id):
     student_to_edit = MusicStudent.query.get_or_404(student_id)
 
-    if request.method == '[POST]':
+    if request.method == 'POST':
         student_to_edit.student_firstName = request.form['student_firstName']
         student_to_edit.student_lastName = request.form['student_lastName']
         student_to_edit.student_id = request.form['student_id']
