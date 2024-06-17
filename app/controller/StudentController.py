@@ -12,6 +12,7 @@ student_bp = Blueprint('student_bp', __name__)
 
 # Route to display all the students
 @student_bp.route('/student', methods=['GET'])
+@login_required
 def students():
     # Query all the students from the database
     students = MusicStudent.query.all()
