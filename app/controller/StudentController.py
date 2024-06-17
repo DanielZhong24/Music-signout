@@ -20,6 +20,7 @@ def students():
 
 # Rotue to add a new student 
 @student_bp.route('/addStudent', methods=['GET', 'POST'])
+@login_required
 def add_student():
     if request.method == 'POST':
         # Get data from the user
@@ -63,14 +64,14 @@ def delete_student(student_id):
         db.session.rollback()
         flash('Error deleting student!', 'danger')
 
-    return redirect(url_for('student_bp.student'))
+    return redirect(url_for('student_bp.students'))
 
 @student_bp.route('/edit_student/<int:student_id>', methods=['GET', 'POST'])
 @login_required
 def edit_student(student_id):
     student_to_edit = MusicStudent.query.get_or_404(student_id)
 
-    if request.method == '[POST]':
+    if request.method == 'POST':
         student_to_edit.student_firstName = request.form['student_firstName']
         student_to_edit.student_lastName = request.form['student_lastName']
         student_to_edit.student_id = request.form['student_id']
@@ -79,7 +80,7 @@ def edit_student(student_id):
         try:
             db.session.commit()
             flash('Student updated successfully!', 'success')
-            return redirect(url_for('student_bp.student'))
+            return redirect(url_for('student_bp.students'))
         except:
             db.session.rollback()
             flash('Error updating student!', 'danger')
