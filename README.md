@@ -7,3 +7,7 @@
 # Logout 
 # Students then should be able to type in their student number and scan in the barcode number to sign out an instrument
 # They cannot sign out instruments that are already borrowed
+
+# If you have further questions email
+# danielzhong0618@gmail.com - Daniel Zhong
+# br19ht0ntru0ng@gmail.com - Brighton Truong
