@@ -1,0 +1,4 @@
+Tested all tables functionalities including edit, delete and add.
+Tested login system, and role selection.
+Tested Instrument, Student, History list view.
+Tested relationship(foreign keys) with all three tables to make sure everything is updated.
